@@ -1,4 +1,4 @@
-
+So I want to begin building in earnest this AstroAPI program and try to get a minimum viable product as quickly as possible. To that end, this document is the project overview that I believe covers the requirements to get there. Can you help me figure out how and where to begin, and then lay out the path I need to take to put this together? Using python and a virtual environment, with a modular structure. This repository should already have a solid architecture, but here it is, just in case 
 
 astro_api_project/
 ├── app/
