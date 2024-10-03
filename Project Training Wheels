@@ -1,4 +1,52 @@
-Astro API Automated Recordings
+
+
+astro_api_project/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── config.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── celestial_bodies.py
+│   │   ├── aspects.py
+│   │   ├── readings.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── webhook_receiver.py
+│   │   ├── data_conversion.py
+│   │   ├── swiss_ephemeris_integration.py
+│   │   ├── aspect_calculations.py
+│   │   ├── neo4j_integration.py
+│   │   ├── email_service.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── error_handling.py
+│   │   ├── logging.py
+│   │   ├── helpers.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── api_routes.py
+│   └── templates/
+│       ├── email_template.html
+│       └── ...
+├── tests/
+│   ├── __init__.py
+│   ├── test_webhook_receiver.py
+│   ├── test_data_conversion.py
+│   ├── test_swiss_ephemeris_integration.py
+│   ├── test_aspect_calculations.py
+│   ├── test_neo4j_integration.py
+│   └── ...
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── .env
+├── .gitignore
+├── README.md
+└── setup.py or pyproject.toml
+
+
+Astro API Project
 
 Overview: Per Airtable form submissions pull planetary positions from the swiss ephemeris, create a transit chart between the pulled spread and my birth data, then relay the information on to Neo4j for storage. Send email with info
 
