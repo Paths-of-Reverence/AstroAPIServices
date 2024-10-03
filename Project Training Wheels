@@ -1,0 +1,87 @@
+Astro API Automated Recordings
+
+Overview: Per Airtable form submissions pull planetary positions from the swiss ephemeris, create a transit chart between the pulled spread and my birth data, then relay the information on to Neo4j for storage. Send email with info
+
+(This should be made using python)
+
+Data Model
+
+Planetary Position Object
+
+Applied Aspect Object=t
+A planetary position object with additional listed information for transits from this planet or car to another.
+
+Reading Object
+Planetary position objects (Transit)
+Planetary position objects (Natal)
+Planetary aspect objects (Transit to Natal)
+Question being asked
+Querent
+
+
+Neo4j model for charts
+
+Node:
+Chart (Comparative)
+Properties
+Chart ID - unique ID used to identify this chart, added as a property to every edge related to this chart
+chart 1 title (Active Chart)
+chart 1 date/time info (Active Chart)
+chart 2 title (Acted Upon Chart)
+chart 2 date/time info (Acted Upon Chart)
+chart 1 Description (Active Chart)
+chart 2 Description (Acted Upon Chart)
+Form a POSITION edge to each planet node from the chart node. Then create a PLACEMENT edge from the planet node to the zodiac sign node of the position, with the degree listed as a property on the PLACEMENT edge. Then, create a separate edge running from the chart node to each of the astrological houses nodes, with the property of what sign this is for the chart, an any placements within this house as a property of a list of strings.
+Form a COMPARATIVE_ASPECT edge running from the Active Chart Planet to the Acted Upon Planet with properties for the type of transit (conjunction, opposition, etc), orb, and Chart ID
+
+
+
+Data Flow
+
+Upon Airtable Form submission take submitted form info, and convert it to python format for a Swiss ephemeris query
+
+Query planetary positions from the Swiss ephemeris
+
+Convert returned planetary positions into sign/degree format
+
+Apply aspect function
+aspects are listed as Acting Chart aspecting Acted Upon Chart
+
+Duplicate data and send down 2 paths:
+
+Path 1-
+
+Convert chart object into Neo4j cypher query for storage and retrieval
+
+Send to Neo4j
+
+
+Path 2- 
+convert to Airtable web hook response
+
+Send to Airtable 
+
+
+Functions needed:
+
+Airtable web hook receiver 
+
+Data conversion to Swiss ephemeris query
+Date/Time to Julian 
+Location to long/lat
+
+Swiss Ephemeris Query
+
+Data Conversion from location/Distance relevant to the earth into standard astrological sign/house/degree
+
+Comparative Aspects Function
+
+Data Conversion to Neo4j submittable format.
+
+Neo4j submission 
+
+Neo4j verification of success 
+
+Data conversion for Airtable Webhook response 
+
+Response to Airtable webhook
