@@ -1,13 +1,15 @@
-# app/main.py
-from flask import Flask, request, jsonify
+# Importing necessary modules from Flask
+from flask import Flask
 
+# Creating an instance of the Flask class
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['POST'])
-def receive_webhook():
-    data = request.json
-    # Process the data here
-    return jsonify({'status': 'success'}), 200
+# Importing the routes from api_routes.py
+from .api_routes import *
 
+# The main entry point of the application
 if __name__ == '__main__':
+    # Running the Flask application
+    # debug=False means no debug information will be shown
+    # port=8000 specifies the port number on which the app will run
     app.run(debug=False, port=8000)
